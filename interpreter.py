@@ -177,7 +177,7 @@ def analyzer(assembler_code):
                 instruction_hex, instruction_bin, finalMem, intMem = formater(bin_ins, object)
                 instruction = f"\t{intMem}\t\t\t{finalMem}\t\t{instruction_hex}\t\t{instruction_bin}\n"
                 writingFiles(file, core, instruction, instruction_hex, intMem)
-    return memory, core
+    return memory, file, core
 
 #Función para ejecutar el programa desde consola
 if __name__ == "__main__":
@@ -185,6 +185,6 @@ if __name__ == "__main__":
         print("Correct use: python interpreter.py assembler_code.asm")
     else:
         assembler_code = sys.argv[1]
-        memory, core = analyzer(assembler_code)
-        fuller(memory, core)
+        memory, file, core = analyzer(assembler_code)
+        fuller(memory, file, core, total_memory=1500)
 ##'''

@@ -76,10 +76,13 @@ def writingFiles(file, core, instruction, hex, intMem):
     hex_chain = f"{hex[0]}{hex[1]} {hex[2]}{hex[3]} {hex[4]}{hex[5]} {hex[6]}{hex[7]} "
     core.write(hex_chain)
 
-def fuller(memory, core):
+def fuller(memory, file, core, total_memory=1500):
     hex_line = "00 00 00 00 "
-    while memory < 1024:
+    bin_line = "00000000000000000000000000000000\n"
+    while memory < total_memory:
         if memory % 16 == 0 and memory != 0:
             core.write("\n")
+            file.write("\n")
         core.write(hex_line)
+        file.write(bin_line)
         memory += 4

@@ -11,7 +11,7 @@ def analyzer(assembler_code):
     core.write("v2.0 raw\n")
     for element in Labels:
         label_line = f"{element.mem:X} <{element.name}>\n"
-        file.write(label_line)
+        # file.write(label_line)
         for object in element.instructions:
             #Decodificacion si es tipo B
             if type(object) == InstructionB:
@@ -46,7 +46,7 @@ def analyzer(assembler_code):
                     bin_ins[i] = func3_bits[j]
                 #Creacion de variables finales conviertiendo los valores
                 instruction_hex, instruction_bin, finalMem, intMem = formater(bin_ins, object)
-                instruction = f"\t{intMem}\t\t\t{finalMem}\t\t{instruction_hex}\t\t{instruction_bin}\n"
+                instruction = f"{instruction_bin}\n"
                 writingFiles(file, core, instruction, instruction_hex, intMem)
             
             #Decodificación si es tipo R
@@ -78,7 +78,7 @@ def analyzer(assembler_code):
                     bin_ins[j] = opcode_bits[i]
                 #Variables finales
                 instruction_hex, instruction_bin, finalMem, intMem = formater(bin_ins, object)
-                instruction = f"\t{intMem}\t\t\t{finalMem}\t\t{instruction_hex}\t\t{instruction_bin}\n"
+                instruction = f"{instruction_bin}\n"
                 writingFiles(file, core, instruction, instruction_hex, intMem)
             #Instrucciones tipo I
             elif type(object) == InstructionI:
@@ -105,7 +105,8 @@ def analyzer(assembler_code):
                     bin_ins[j] = opcode_bits[i]
                 #Variables finales
                 instruction_hex, instruction_bin, finalMem, intMem = formater(bin_ins, object)
-                instruction = f"\t{intMem}\t\t\t{finalMem}\t\t{instruction_hex}\t\t{instruction_bin}\n"
+                instruction = f"{instruction_bin}\n"
+                # instruction = f"\t{intMem}\t\t\t{finalMem}\t\t{instruction_hex}\t\t{instruction_bin}\n"
                 writingFiles(file, core, instruction, instruction_hex, intMem)
             #Asignación tipo S
             elif type(object) == InstructionS:
@@ -134,7 +135,7 @@ def analyzer(assembler_code):
                     bin_ins[i] = func3_bits[j]
                 #Creacion de variables finales conviertiendo los valores
                 instruction_hex, instruction_bin, finalMem, intMem = formater(bin_ins, object)
-                instruction = f"\t{intMem}\t\t\t{finalMem}\t\t{instruction_hex}\t\t{instruction_bin}\n"
+                instruction = f"{instruction_bin}\n"
                 writingFiles(file, core, instruction, instruction_hex, intMem)
             #Instrucciones tipo U
             elif type(object) == InstructionU:
@@ -153,7 +154,7 @@ def analyzer(assembler_code):
                     bin_ins[j] = opcode_bits[i]
                 #Creacion de variables finales conviertiendo los valores
                 instruction_hex, instruction_bin, finalMem, intMem = formater(bin_ins, object)
-                instruction = f"\t{intMem}\t\t\t{finalMem}\t\t{instruction_hex}\t\t{instruction_bin}\n"
+                instruction = f"{instruction_bin}\n"
                 writingFiles(file, core, instruction, instruction_hex, intMem)
             #Instrucciones tipo J
             elif type(object) == InstructionJ:
@@ -175,7 +176,7 @@ def analyzer(assembler_code):
                     bin_ins[j] = opcode_bits[i]
                 #Creacion de variables finales conviertiendo los valores
                 instruction_hex, instruction_bin, finalMem, intMem = formater(bin_ins, object)
-                instruction = f"\t{intMem}\t\t\t{finalMem}\t\t{instruction_hex}\t\t{instruction_bin}\n"
+                instruction = f"{instruction_bin}\n"
                 writingFiles(file, core, instruction, instruction_hex, intMem)
     return memory, file, core
 

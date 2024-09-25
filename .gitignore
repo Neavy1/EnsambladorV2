@@ -1,0 +1,24 @@
+# Sistema operativo
+.DS_Store
+Thumbs.db
+
+# Archivos de log
+*.log
+
+# Directorios de caché de Python
+__pycache__/
+
+# Archivos de entorno
+.env
+
+# Archivos de compilación
+dist/
+build/
+
+# Archivos temporales
+*.tmp
+*.swp
+
+# Archivos de IDEs
+.vscode/
+.idea/
